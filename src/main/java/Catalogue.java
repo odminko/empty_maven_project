@@ -76,7 +76,7 @@ public class Catalogue {
             SQLQuery += "(" + item.id + ",'" + item.name + "'," + item.weight + "," + item.isContainer() + "," + item.parentId + ")";
             //ResultSet rs =
             dbConnection.execute(SQLQuery);
-            System.out.println(SQLQuery);
+            //System.out.println(SQLQuery);
 
         }
         return true;
