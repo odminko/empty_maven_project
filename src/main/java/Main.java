@@ -2,18 +2,22 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class Main {
-    public static void main(String[] args){
+    public static BufferedReader reader;
+
+    public static void main(String[] args) throws Exception{
 
         Catalogue cat;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter database engine name (H2/MySQL):");
         String command = reader.readLine();
         switch (command.toUpperCase()) {
             case "H2":
                 cat = new Catalogue(DatabaseConnection.DbType.H2);
+                cat.getCatalogue();
                 break;
             case "MYSQL" :
                 cat = new Catalogue(DatabaseConnection.DbType.MySQL);
+                cat.getCatalogue();
                 break;
             default:
                 cat = new Catalogue(null);
@@ -66,7 +70,7 @@ public class Main {
         //container1.describe(0);
         //container2.describe(0);
         */
-        cat.getCatalogue();
+        //cat.getCatalogue();
         /*
         ItemContainer container1 = new ItemContainer("container2",0);
         cat.put(container1);
@@ -76,7 +80,7 @@ public class Main {
         //cat.push(2,1);
         //cat.push(1,0);
         //cat.drop(0);
-        cat.pull(2);
-        cat.describe(0);
+        //cat.pull(2);
+        //cat.describe(0);
     }
 }
