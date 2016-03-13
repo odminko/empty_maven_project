@@ -110,6 +110,10 @@ public class Catalogue {
         Item item = getItem(id);
         //System.out.println("Item for id="+id+" is "+item.name);
         if (parent!=null) {
+            if (dbConnection!=null) {
+                String SQLQuery = "update items set parentId=0 where id=" + id;
+                dbConnection.execute(SQLQuery);
+            }
             map.put(id, getItem(id));
             parent.remove(item);
 

@@ -9,6 +9,13 @@ public class Main {
         Catalogue cat;
         reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter database engine name (H2/MySQL):");
+        int itemId;
+        int containerId;
+        int id;
+        int weight;
+        Item item;
+        String name;
+
         String command = reader.readLine();
         switch (command.toUpperCase()) {
             case "H2":
@@ -34,7 +41,40 @@ public class Main {
                     cat.describe(0);
                     break;
                 case "NEW":
+                    //Item item;
+                    System.out.println("Enter name:");
+                    name = reader.readLine();
+                    System.out.println("Enter weight:");
+                    weight = Integer.parseInt(reader.readLine());
+                    System.out.println("Enter type (item/container):");
+                    String itemType = reader.readLine().toUpperCase();
+                    if (itemType.equals("ITEM"))
+                        item = new Item(name, weight);
+                    else
+                        item = new ItemContainer(name, weight);
+                    cat.put(item);
+
                     break;
+                case "DROP":
+                    System.out.println("Enter item id:");
+                    id = Integer.parseInt(reader.readLine());
+                    cat.drop(id);
+
+                    break;
+                case "PUSH":
+                    System.out.println("Enter item id:");
+                    itemId = Integer.parseInt(reader.readLine());
+                    System.out.println("Enter container id:");
+                    containerId = Integer.parseInt(reader.readLine());
+                    cat.push(itemId, containerId);
+                    break;
+                case "PULL":
+                    System.out.println("Enter item id:");
+                    itemId = Integer.parseInt(reader.readLine());
+                    cat.pull(itemId);
+                    break;
+                default:
+                    System.out.println("Type list, new, drop, push, pull or exit");
             }
         }
 
